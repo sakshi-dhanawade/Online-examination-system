@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ exam.title }} - Result</title>
+    <link rel="stylesheet" href="{% static 'exam/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>{{ exam.title }} - Result</h1>
+    <p>You scored <b>{{ score }}</b> out of <b>{{ total }}</b></p>
+
+    <a href="{% url 'exam_list' %}">⬅ Back to Exams</a>
+</div>
+</body>
+</html>

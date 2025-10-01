@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam List</title>
+    <link rel="stylesheet" href="{% static 'exam/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>Available Exams</h1>
+    <ul>
+      {% for exam in exams %}
+        <li>
+          <a href="{% url 'exam_detail' exam.pk %}">{{ exam.title }}</a> - {{ exam.description }}
+        </li>
+      {% empty %}
+        <li>No exams available.</li>
+      {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

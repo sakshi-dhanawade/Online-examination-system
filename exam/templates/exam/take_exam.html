@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Take {{ exam.title }}</title>
+    <link rel="stylesheet" href="{% static 'exam/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>{{ exam.title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for q in questions %}
+            <div>
+                <p><b>Q{{ forloop.counter }}: {{ q.text }}</b></p>
+                {% for c in q.choices.all %}
+                    <label>
+                        <input type="radio" name="question_{{ q.id }}" value="{{ c.id }}">
+                        {{ c.text }}
+                    </label><br>
+                {% endfor %}
+            </div>
+            <hr>
+        {% endfor %}
+        <button type="submit">Submit Exam</button>
+    </form>
+    <br>
+    <a href="{% url 'exam_detail' exam.pk %}">⬅ Back to Exam</a>
+</div>
+</body>
+</html>

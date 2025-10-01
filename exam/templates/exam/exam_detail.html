@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ exam.title }}</title>
+    <link rel="stylesheet" href="{% static 'exam/style.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>{{ exam.title }}</h1>
+    <p>{{ exam.description }}</p>
+
+    <h2>Questions Preview</h2>
+    <ol>
+      {% for q in questions %}
+        <li>{{ q.text }}</li>
+      {% empty %}
+        <li>No questions added yet.</li>
+      {% endfor %}
+    </ol>
+
+    <a href="{% url 'take_exam' exam.pk %}">Take Exam</a>
+    <br><br>
+    <a href="{% url 'exam_list' %}">⬅ Back to Exams</a>
+</div>
+</body>
+</html>
