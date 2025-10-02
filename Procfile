@@ -1,1 +1,1 @@
-web: gunicorn lms.wsgi:application --chdir lms --log-file-
+web: gunicorn lms.wsgi:application --chdir . --log-file-
